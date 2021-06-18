@@ -52,28 +52,11 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h6n-YC-TWb">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                        <rect key="frame" x="0.0" y="51" width="414" height="723"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <view key="tableHeaderView" contentMode="scaleToFill" id="nTR-va-j6C">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="n7F-dX-vNk">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </searchBar>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="n7F-dX-vNk" secondAttribute="trailing" id="VuN-52-z4k"/>
-                                                <constraint firstItem="n7F-dX-vNk" firstAttribute="leading" secondItem="nTR-va-j6C" secondAttribute="leading" id="X2M-rs-YQB"/>
-                                                <constraint firstItem="n7F-dX-vNk" firstAttribute="top" secondItem="nTR-va-j6C" secondAttribute="top" id="tXF-Qc-8Lq"/>
-                                            </constraints>
-                                        </view>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="63" id="AAU-Mv-WtK">
-                                                <rect key="frame" x="0.0" y="86.5" width="414" height="63"/>
+                                                <rect key="frame" x="0.0" y="24.5" width="414" height="63"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AAU-Mv-WtK" id="7mY-qx-hOP">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
@@ -83,13 +66,22 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
+                                    <searchBar contentMode="redraw" barStyle="black" placeholder="Search Here..." translatesAutoresizingMaskIntoConstraints="NO" id="dD2-q0-jI0">
+                                        <rect key="frame" x="10" y="0.0" width="394" height="51"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="barTintColor" systemColor="systemGray6Color"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
+                                    <constraint firstItem="dD2-q0-jI0" firstAttribute="leading" secondItem="T4g-6Y-MJC" secondAttribute="leading" constant="10" id="7Bc-Tk-D9B"/>
                                     <constraint firstItem="h6n-YC-TWb" firstAttribute="leading" secondItem="T4g-6Y-MJC" secondAttribute="leading" id="IYb-FJ-ALn"/>
-                                    <constraint firstItem="h6n-YC-TWb" firstAttribute="top" secondItem="T4g-6Y-MJC" secondAttribute="top" id="WcF-Ea-3XK"/>
+                                    <constraint firstItem="h6n-YC-TWb" firstAttribute="top" secondItem="dD2-q0-jI0" secondAttribute="bottom" id="Pg8-ed-FLT"/>
                                     <constraint firstAttribute="bottom" secondItem="h6n-YC-TWb" secondAttribute="bottom" id="dQi-sC-oR6"/>
                                     <constraint firstAttribute="trailing" secondItem="h6n-YC-TWb" secondAttribute="trailing" id="mWE-9H-n2A"/>
+                                    <constraint firstAttribute="trailing" secondItem="dD2-q0-jI0" secondAttribute="trailing" constant="10" id="tlI-lA-tcP"/>
+                                    <constraint firstItem="dD2-q0-jI0" firstAttribute="top" secondItem="T4g-6Y-MJC" secondAttribute="top" id="uEF-o0-0RI"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -108,7 +100,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="News" id="JDz-kR-0yl"/>
                     <connections>
-                        <outlet property="searchBar" destination="n7F-dX-vNk" id="JoA-2y-c3h"/>
+                        <outlet property="searchBar" destination="dD2-q0-jI0" id="jtM-Eo-81T"/>
                         <outlet property="tableView" destination="h6n-YC-TWb" id="De7-0c-HKL"/>
                         <outlet property="view_main" destination="T4g-6Y-MJC" id="sIY-WC-6nE"/>
                     </connections>
@@ -122,9 +114,10 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NeU-ch-Yax" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0On-fc-eKi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="0On-fc-eKi">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

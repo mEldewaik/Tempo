@@ -19,7 +19,7 @@ class NewsListingTableViewCell: UITableViewCell {
         didSet{
             HelperMethods.configureImage(article?.urlToImage, self.img_news, "")
             self.lbl_descr.text = article?.articleDescription
-            self.lbl_source.text = article?.url
+            self.lbl_source.text = article?.source?.name
         }
     }
     

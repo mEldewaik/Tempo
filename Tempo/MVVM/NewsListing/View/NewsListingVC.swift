@@ -22,12 +22,8 @@ class NewsListingVC: UIViewController, UIScrollViewDelegate {
     
     private (set) public var disposeBag = DisposeBag()
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         self.getNewsData()
         self.subscribeToLoading()
         self.subscribeToNewsResponse()
@@ -66,8 +62,11 @@ class NewsListingVC: UIViewController, UIScrollViewDelegate {
         
         Observable
             .zip(tableView.rx.itemSelected, tableView.rx.modelSelected(Article.self))
-            .bind { [unowned self] indexPath, news in
+            .bind { [unowned self] indexPath, article in
                 // go to details viewcontroller
+                let vc = DetailsVC.instantiate()
+                vc.articleObservable.accept(article)
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             .disposed(by: disposeBag)
         
@@ -82,7 +81,6 @@ class NewsListingVC: UIViewController, UIScrollViewDelegate {
     
     private
     func loadMoreData(for indexPath: IndexPath) {
-        self.view.endEditing(true)
         let count = self.viewModel.NewsListObservable.value.count
         if indexPath.row == count - 1 {
             if self.viewModel.totalBehavior.value > count {
